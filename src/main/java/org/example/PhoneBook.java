@@ -20,6 +20,13 @@ public class PhoneBook {
     }
 
     public String findByNumber(String number) {
+
+//        for (Map.Entry<String,String> entry : book.entrySet()) {
+//            if (entry.getValue().equals(number)) {
+//                return entry.getKey();
+//            }
+//        }
+
         return null;
     }
 
