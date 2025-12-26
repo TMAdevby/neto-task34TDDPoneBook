@@ -11,8 +11,8 @@ public class PhoneBook {
         if (book.containsKey(name)) {
             return false;
         }
-//        book.put(name, number);
-        return false;
+        book.put(name, number);
+        return true;
     }
 
     public String get(String name) {
