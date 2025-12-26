@@ -2,6 +2,9 @@ import org.example.PhoneBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PhoneBookTest {
@@ -45,6 +48,21 @@ public class PhoneBookTest {
 
         assertEquals("+911234567",phoneBook.findByName("Alex"));
         assertNull(phoneBook.findByName("Lee"));
+    }
+
+    @Test
+    void shouldReturnAllNamesInAlphabeticalOrder(){
+
+        phoneBook.add("Serge","+611234567");
+        phoneBook.add("Alex","+911234567");
+        phoneBook.add("Mikle","+511234567");
+        phoneBook.add("Pavel","+311234567");
+
+        List<String> names = phoneBook.getAllNamesInOrder();
+
+        List<String> expected = Arrays.asList("Alex","Mikle","Pavel","Serge");
+
+        assertEquals(expected,names,"Names should be returned in alphabetical order");
 
     }
 

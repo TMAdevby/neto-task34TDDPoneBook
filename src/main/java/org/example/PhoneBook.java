@@ -1,12 +1,14 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class PhoneBook {
 
-    private final Map<String, String> nameToNumber = new HashMap<>();
-    private final Map<String, String> numberToName = new HashMap<>();
+    private final Map<String, String> nameToNumber = new TreeMap<>();
+    private final Map<String, String> numberToName = new TreeMap<>();
 
     public int add(String name, String number) {
         if (nameToNumber.containsKey(name)) {
@@ -22,7 +24,7 @@ public class PhoneBook {
     }
 
     public String getNameByNumber(String number) {
-        return numberToName.get(number); // O(1) — без перебора!
+        return numberToName.get(number);
     }
 
 
@@ -38,6 +40,11 @@ public class PhoneBook {
             return nameToNumber.get(name);
         }
         return null;
+    }
+
+    public ArrayList<String> getAllNamesInOrder(){
+        //return new ArrayList<String>(nameToNumber.keySet());
+        return new ArrayList<String>();
     }
 
 }
