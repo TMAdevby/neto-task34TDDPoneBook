@@ -5,28 +5,31 @@ import java.util.Map;
 
 public class PhoneBook {
 
-    Map<String,String> book = new HashMap<>();
+    private final Map<String, String> nameToNumber = new HashMap<>();
+    private final Map<String, String> numberToName = new HashMap<>();
 
-    public boolean add(String name, String number) {
-        if (book.containsKey(name)) {
-            return false;
+    public int add(String name, String number) {
+        if (nameToNumber.containsKey(name)) {
+            return nameToNumber.size();
         }
-        book.put(name, number);
-        return true;
+        nameToNumber.put(name, number);
+        numberToName.put(number, name);
+        return nameToNumber.size();
     }
 
-    public String get(String name) {
-        return book.get(name);
+    public String getNumber(String name) {
+        return nameToNumber.get(name);
     }
+
+    public String getNameByNumber(String number) {
+        return numberToName.get(number); // O(1) — без перебора!
+    }
+
 
     public String findByNumber(String number) {
-
-        for (Map.Entry<String,String> entry : book.entrySet()) {
-            if (entry.getValue().equals(number)) {
-                return entry.getKey();
-            }
+        if(numberToName.containsKey(number)){
+            return numberToName.get(number);
         }
-
         return null;
     }
 

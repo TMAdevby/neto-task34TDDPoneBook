@@ -16,21 +16,17 @@ public class PhoneBookTest {
     @Test
     void shouldAddNumberSuccessfully() {
 
-        boolean added = phoneBook.add("Alex","+911234567");
+        assertEquals(1, phoneBook.add("Alex","+911234567"));
+        assertEquals("+911234567", phoneBook.getNumber("Alex"));
 
-        assertTrue(added, "Contact should be added successfully");
-        assertEquals("+911234567", phoneBook.get("Alex"));
     }
 
     @Test
     void shouldDontAddDuplicate() {
 
-        phoneBook.add("Alex","+911234567");
-
-        boolean added = phoneBook.add("Alex","+777777777");
-
-        assertFalse(added, "Contact shouldn't be added successfully");
-        assertEquals("+911234567", phoneBook.get("Alex"));
+        assertEquals(1, phoneBook.add("Alex","+911234567"));
+        assertEquals(1, phoneBook.add("Alex","+777777777"));
+        assertEquals("+911234567", phoneBook.getNumber("Alex"));
     }
 
     @Test
