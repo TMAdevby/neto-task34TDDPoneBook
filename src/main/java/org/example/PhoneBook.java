@@ -18,4 +18,10 @@ public class PhoneBook {
     public String get(String name) {
         return book.get(name);
     }
+
+    public String findByNumber(String number) {
+        return null;
+    }
+
+
 }
