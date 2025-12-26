@@ -38,5 +38,14 @@ public class PhoneBookTest {
         assertNull(phoneBook.findByNumber("+777777777"));
     }
 
+    @Test
+    void shouldReturnNumberByName(){
+
+        phoneBook.add("Alex","+911234567");
+
+        assertEquals("+911234567",phoneBook.findByName("Alex"));
+        assertNull(phoneBook.findByName("Lee"));
+
+    }
 
 }
