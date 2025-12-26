@@ -32,4 +32,15 @@ public class PhoneBookTest {
         assertFalse(added, "Contact shouldn't be added successfully");
         assertEquals("+911234567", phoneBook.get("Alex"));
     }
+
+    @Test
+    void shouldReturnNameByNumber(){
+
+        phoneBook.add("Alex","+911234567");
+
+        assertEquals("Alex", phoneBook.findByNumber("+911234567"));
+        assertNull(phoneBook.findByNumber("+777777777"));
+    }
+
+
 }
